@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="DayTicker 倒数日 App：记录生日、节日、纪念日，支持公历和农历，内置全球节日介绍与一键添加。">
+  <meta name="description" content="DayTicker countdown app for birthdays, festivals, and anniversaries.">
   <title>DayTicker - 倒数日与全球节日助手</title>
   <style>
     :root {
@@ -90,6 +90,29 @@
 
     .nav a:hover {
       color: var(--text);
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      border: 1px solid #eadfce;
+      border-radius: 999px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .lang-btn {
+      border: 0;
+      background: transparent;
+      padding: 7px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      color: #5f6670;
+    }
+
+    .lang-btn.active {
+      background: #fff3e5;
+      color: #8f4b00;
+      font-weight: 600;
     }
 
     .hero {
@@ -393,6 +416,10 @@
         display: none;
       }
 
+      .lang-btn {
+        padding: 7px 10px;
+      }
+
       .hero {
         padding-top: 38px;
       }
@@ -418,17 +445,21 @@
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top" aria-label="DayTicker 首页">
+      <a class="brand" href="#top" aria-label="DayTicker 首页" data-i18n-aria="brand.aria">
         <span class="logo">⏳</span>
         <span>DayTicker</span>
       </a>
       <nav class="nav" aria-label="主导航">
-        <a href="#features">核心功能</a>
-        <a href="#festivals">节日亮点</a>
-        <a href="#users">适用人群</a>
-        <a href="#support">支持与 FAQ</a>
-        <a href="#download">立即下载</a>
+        <a href="#features" data-i18n="nav.features">核心功能</a>
+        <a href="#festivals" data-i18n="nav.festivals">节日亮点</a>
+        <a href="#users" data-i18n="nav.users">适用人群</a>
+        <a href="#support" data-i18n="nav.support">支持与 FAQ</a>
+        <a href="#download" data-i18n="nav.download">立即下载</a>
       </nav>
+      <div class="lang-switch" role="group" aria-label="Language Switch">
+        <button id="lang-zh" class="lang-btn" type="button">中文</button>
+        <button id="lang-en" class="lang-btn" type="button">EN</button>
+      </div>
     </div>
   </header>
 
@@ -436,9 +467,9 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <span class="eyebrow">倒数日 × 全球节日文化</span>
-          <h1>把每个重要日子，<br>都变成值得期待的时刻</h1>
-          <p class="lead">
+          <span class="eyebrow" data-i18n="hero.eyebrow">倒数日 × 全球节日文化</span>
+          <h1 data-i18n-html="hero.title">把每个重要日子，<br>都变成值得期待的时刻</h1>
+          <p class="lead" data-i18n="hero.lead">
             DayTicker 是一款轻松添加倒计时的应用程序。快速记录生日、结婚纪念日、节日和任意重要日期，
             支持公历与农历，并提供全球节日库与详细文化介绍，让时间管理更清晰、更有仪式感。
           </p>
@@ -448,25 +479,26 @@
               href="https://play.google.com/store/apps/details?id=com.deqiutseng.luckyday"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="在 Google Play 下载 DayTicker">
+              aria-label="在 Google Play 下载 DayTicker"
+              data-i18n-aria="hero.downloadAria">
               <span aria-hidden="true">▶</span>
-              <span>Google Play 下载</span>
+              <span data-i18n="hero.downloadBtn">Google Play 下载</span>
             </a>
-            <a class="btn btn-ghost" href="#features">查看功能亮点</a>
+            <a class="btn btn-ghost" href="#features" data-i18n="hero.featureBtn">查看功能亮点</a>
           </div>
-          <p class="meta">支持 Android 手机与平板，网页在桌面浏览器和手机浏览器均可顺畅浏览。</p>
+          <p class="meta" data-i18n="hero.meta">支持 Android 手机与平板，网页在桌面浏览器和手机浏览器均可顺畅浏览。</p>
         </div>
 
-        <aside class="preview" aria-label="应用截图预览">
-          <p class="preview-title">应用真实界面预览</p>
+        <aside class="preview" aria-label="应用截图预览" data-i18n-aria="preview.aria">
+          <p class="preview-title" data-i18n="preview.title">应用真实界面预览</p>
           <div class="preview-grid">
             <figure class="shot-card">
-              <img src="./assets/images/app-festivals.png" alt="DayTicker 节日列表页面截图">
-              <figcaption class="shot-caption">节日列表页</figcaption>
+              <img src="./assets/images/app-festivals.png" alt="DayTicker 节日列表页面截图" data-i18n-alt="preview.festivalAlt">
+              <figcaption class="shot-caption" data-i18n="preview.festivalCaption">节日列表页</figcaption>
             </figure>
             <figure class="shot-card">
-              <img src="./assets/images/app-countdowns.png" alt="DayTicker 倒计时列表页面截图">
-              <figcaption class="shot-caption">倒计时列表页</figcaption>
+              <img src="./assets/images/app-countdowns.png" alt="DayTicker 倒计时列表页面截图" data-i18n-alt="preview.countdownAlt">
+              <figcaption class="shot-caption" data-i18n="preview.countdownCaption">倒计时列表页</figcaption>
             </figure>
           </div>
         </aside>
@@ -475,41 +507,41 @@
 
     <section id="features">
       <div class="container">
-        <h2 class="section-head">为什么选择 DayTicker？</h2>
-        <p class="section-sub">
+        <h2 class="section-head" data-i18n="features.title">为什么选择 DayTicker？</h2>
+        <p class="section-sub" data-i18n="features.sub">
           不只是记录日期，更是帮你建立“时间节奏感”。从个人纪念日到世界节日，一站式管理、清晰展示、轻松添加。
         </p>
 
         <div class="feature-grid">
           <article class="card">
             <div class="icon">⚡</div>
-            <h3>快速添加</h3>
-            <p>一键创建生日、纪念日、节日或任意重要日期，操作简单直观。</p>
+            <h3 data-i18n="features.f1t">快速添加</h3>
+            <p data-i18n="features.f1d">一键创建生日、纪念日、节日或任意重要日期，操作简单直观。</p>
           </article>
           <article class="card">
             <div class="icon">🗓️</div>
-            <h3>双历法支持</h3>
-            <p>同时支持公历与农历，满足不同文化场景和个人习惯。</p>
+            <h3 data-i18n="features.f2t">双历法支持</h3>
+            <p data-i18n="features.f2d">同时支持公历与农历，满足不同文化场景和个人习惯。</p>
           </article>
           <article class="card">
             <div class="icon">🎨</div>
-            <h3>个性化展示</h3>
-            <p>自定义事件颜色与图标，让倒计时列表更清晰、更有活力。</p>
+            <h3 data-i18n="features.f3t">个性化展示</h3>
+            <p data-i18n="features.f3d">自定义事件颜色与图标，让倒计时列表更清晰、更有活力。</p>
           </article>
           <article class="card">
             <div class="icon">🌐</div>
-            <h3>全球节日合集</h3>
-            <p>内置海量节日库，覆盖中国、美国、英国、日本、韩国等国家和地区。</p>
+            <h3 data-i18n="features.f4t">全球节日合集</h3>
+            <p data-i18n="features.f4d">内置海量节日库，覆盖中国、美国、英国、日本、韩国等国家和地区。</p>
           </article>
           <article class="card">
             <div class="icon">📚</div>
-            <h3>节日文化解读</h3>
-            <p>每个节日附带背景与习俗介绍，等待的同时也在认识世界文化。</p>
+            <h3 data-i18n="features.f5t">节日文化解读</h3>
+            <p data-i18n="features.f5d">每个节日附带背景与习俗介绍，等待的同时也在认识世界文化。</p>
           </article>
           <article class="card">
             <div class="icon">🎯</div>
-            <h3>精准倒计时</h3>
-            <p>清晰展示剩余天数，帮助你提前规划，不再错过关键时刻。</p>
+            <h3 data-i18n="features.f6t">精准倒计时</h3>
+            <p data-i18n="features.f6d">清晰展示剩余天数，帮助你提前规划，不再错过关键时刻。</p>
           </article>
         </div>
       </div>
@@ -517,27 +549,27 @@
 
     <section id="festivals">
       <div class="container">
-        <h2 class="section-head">全球节日，不止于“知道日期”</h2>
-        <p class="section-sub">
+        <h2 class="section-head" data-i18n="festivals.title">全球节日，不止于“知道日期”</h2>
+        <p class="section-sub" data-i18n="festivals.sub">
           通过节日列表与介绍功能，你可以快速筛选想关注的节日，并将其一键加入个人倒计时，形成专属节奏表。
         </p>
         <div class="list-wrap">
           <article class="list-panel">
-            <h3>内置热门节日示例</h3>
+            <h3 data-i18n="festivals.examplesTitle">内置热门节日示例</h3>
             <ul>
-              <li>元旦、春节、端午节、中秋节</li>
-              <li>情人节、国际妇女节、地球日</li>
-              <li>感恩节、万圣节、圣诞节</li>
-              <li>母亲节、父亲节、劳动节</li>
+              <li data-i18n="festivals.example1">元旦、春节、端午节、中秋节</li>
+              <li data-i18n="festivals.example2">情人节、国际妇女节、地球日</li>
+              <li data-i18n="festivals.example3">感恩节、万圣节、圣诞节</li>
+              <li data-i18n="festivals.example4">母亲节、父亲节、劳动节</li>
             </ul>
           </article>
           <article class="list-panel" id="users">
-            <h3>适合哪些人？</h3>
+            <h3 data-i18n="users.title">适合哪些人？</h3>
             <ul>
-              <li>重视生活仪式感，想记录每个重要日子的你</li>
-              <li>容易忘记生日和纪念日，需要提醒与规划的你</li>
-              <li>管理项目与截止日期，希望清晰掌握时间的专业人士</li>
-              <li>热爱世界文化，想了解节日起源与习俗的学习者</li>
+              <li data-i18n="users.u1">重视生活仪式感，想记录每个重要日子的你</li>
+              <li data-i18n="users.u2">容易忘记生日和纪念日，需要提醒与规划的你</li>
+              <li data-i18n="users.u3">管理项目与截止日期，希望清晰掌握时间的专业人士</li>
+              <li data-i18n="users.u4">热爱世界文化，想了解节日起源与习俗的学习者</li>
             </ul>
           </article>
         </div>
@@ -548,8 +580,8 @@
       <div class="container">
         <div class="cta-box">
           <div>
-            <h2 class="cta-title">告别遗忘，迎接期待</h2>
-            <p class="cta-text">
+            <h2 class="cta-title" data-i18n="cta.title">告别遗忘，迎接期待</h2>
+            <p class="cta-text" data-i18n="cta.text">
               从现在开始，用 DayTicker 明智地规划时间，让每个重要日期都有被认真对待的意义。
             </p>
           </div>
@@ -558,9 +590,10 @@
             href="https://play.google.com/store/apps/details?id=com.deqiutseng.luckyday"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="前往 Google Play 下载 DayTicker">
+            aria-label="前往 Google Play 下载 DayTicker"
+            data-i18n-aria="cta.downloadAria">
             <span aria-hidden="true">▶</span>
-            <span>前往 Google Play</span>
+            <span data-i18n="cta.downloadBtn">前往 Google Play</span>
           </a>
         </div>
       </div>
@@ -568,47 +601,47 @@
 
     <section id="support">
       <div class="container">
-        <h2 class="section-head">隐私政策 / 联系方式 / 常见问题</h2>
-        <p class="section-sub">
+        <h2 class="section-head" data-i18n="support.title">隐私政策 / 联系方式 / 常见问题</h2>
+        <p class="section-sub" data-i18n="support.sub">
           正式发布信息：我们重视用户数据安全与沟通反馈，欢迎通过邮箱联系建议、合作或问题反馈。
         </p>
         <div class="policy-grid">
           <article class="card">
             <div class="icon">🔒</div>
-            <h3>隐私政策</h3>
+            <h3 data-i18n="privacy.title">隐私政策</h3>
             <p>
-              DayTicker 仅在功能必要范围内使用数据，并持续优化隐私与安全措施。
-              <a href="https://sites.google.com/view/appdaytickerprivacypolicy" target="_blank" rel="noopener noreferrer">查看隐私政策全文</a>。
+              <span data-i18n="privacy.prefix">DayTicker 仅在功能必要范围内使用数据，并持续优化隐私与安全措施。</span>
+              <a href="https://sites.google.com/view/appdaytickerprivacypolicy" target="_blank" rel="noopener noreferrer" data-i18n="privacy.link">查看隐私政策全文</a><span data-i18n="privacy.suffix">。</span>
             </p>
           </article>
           <article class="card">
             <div class="icon">✉️</div>
-            <h3>联系邮箱</h3>
+            <h3 data-i18n="contact.title">联系邮箱</h3>
             <p>
-              反馈与合作请联系：
+              <span data-i18n="contact.prefix">反馈与合作请联系：</span>
               <a href="mailto:deqiutseng@gmail.com">deqiutseng@gmail.com</a>
             </p>
           </article>
         </div>
 
         <div class="list-panel" style="margin-top:16px;">
-          <h3>常见问题 FAQ</h3>
+          <h3 data-i18n="faq.title">常见问题 FAQ</h3>
           <ul class="faq-list">
             <li class="faq-item">
-              <h4>1. 可以添加哪些倒计时类型？</h4>
-              <p>可添加生日、结婚纪念日、节日、项目截止日，以及任意自定义重要日期。</p>
+              <h4 data-i18n="faq.q1">1. 可以添加哪些倒计时类型？</h4>
+              <p data-i18n="faq.a1">可添加生日、结婚纪念日、节日、项目截止日，以及任意自定义重要日期。</p>
             </li>
             <li class="faq-item">
-              <h4>2. 是否支持农历日期？</h4>
-              <p>支持。你可以根据习惯在公历与农历场景中进行记录与管理。</p>
+              <h4 data-i18n="faq.q2">2. 是否支持农历日期？</h4>
+              <p data-i18n="faq.a2">支持。你可以根据习惯在公历与农历场景中进行记录与管理。</p>
             </li>
             <li class="faq-item">
-              <h4>3. 节日库覆盖哪些地区？</h4>
-              <p>内置覆盖中国、美国、英国、日本、韩国等国家和地区的传统与现代节日。</p>
+              <h4 data-i18n="faq.q3">3. 节日库覆盖哪些地区？</h4>
+              <p data-i18n="faq.a3">内置覆盖中国、美国、英国、日本、韩国等国家和地区的传统与现代节日。</p>
             </li>
             <li class="faq-item">
-              <h4>4. 如何下载安装 DayTicker？</h4>
-              <p>点击页面中的 Google Play 按钮，即可跳转应用商店下载安装。</p>
+              <h4 data-i18n="faq.q4">4. 如何下载安装 DayTicker？</h4>
+              <p data-i18n="faq.a4">点击页面中的 Google Play 按钮，即可跳转应用商店下载安装。</p>
             </li>
           </ul>
         </div>
@@ -618,9 +651,258 @@
 
   <footer>
     <div class="container">
-      <strong>DayTicker</strong> · 让每个日子都值得期待 · 联系方式：
+      <strong>DayTicker</strong> · <span data-i18n="footer.tagline">让每个日子都值得期待</span> · <span data-i18n="footer.contact">联系方式：</span>
       <a href="mailto:deqiutseng@gmail.com">deqiutseng@gmail.com</a>
     </div>
   </footer>
+  <script>
+    (function () {
+      var i18n = {
+        zh: {
+          "site.title": "DayTicker - 倒数日与全球节日助手",
+          "site.description": "DayTicker 倒数日 App：记录生日、节日、纪念日，支持公历和农历，内置全球节日介绍与一键添加。",
+          "brand.aria": "DayTicker 首页",
+          "nav.features": "核心功能",
+          "nav.festivals": "节日亮点",
+          "nav.users": "适用人群",
+          "nav.support": "支持与 FAQ",
+          "nav.download": "立即下载",
+          "hero.eyebrow": "倒数日 × 全球节日文化",
+          "hero.title": "把每个重要日子，<br>都变成值得期待的时刻",
+          "hero.lead": "DayTicker 是一款轻松添加倒计时的应用程序。快速记录生日、结婚纪念日、节日和任意重要日期，支持公历与农历，并提供全球节日库与详细文化介绍，让时间管理更清晰、更有仪式感。",
+          "hero.downloadAria": "在 Google Play 下载 DayTicker",
+          "hero.downloadBtn": "Google Play 下载",
+          "hero.featureBtn": "查看功能亮点",
+          "hero.meta": "支持 Android 手机与平板，网页在桌面浏览器和手机浏览器均可顺畅浏览。",
+          "preview.aria": "应用截图预览",
+          "preview.title": "应用真实界面预览",
+          "preview.festivalAlt": "DayTicker 节日列表页面截图",
+          "preview.festivalCaption": "节日列表页",
+          "preview.countdownAlt": "DayTicker 倒计时列表页面截图",
+          "preview.countdownCaption": "倒计时列表页",
+          "features.title": "为什么选择 DayTicker？",
+          "features.sub": "不只是记录日期，更是帮你建立“时间节奏感”。从个人纪念日到世界节日，一站式管理、清晰展示、轻松添加。",
+          "features.f1t": "快速添加",
+          "features.f1d": "一键创建生日、纪念日、节日或任意重要日期，操作简单直观。",
+          "features.f2t": "双历法支持",
+          "features.f2d": "同时支持公历与农历，满足不同文化场景和个人习惯。",
+          "features.f3t": "个性化展示",
+          "features.f3d": "自定义事件颜色与图标，让倒计时列表更清晰、更有活力。",
+          "features.f4t": "全球节日合集",
+          "features.f4d": "内置海量节日库，覆盖中国、美国、英国、日本、韩国等国家和地区。",
+          "features.f5t": "节日文化解读",
+          "features.f5d": "每个节日附带背景与习俗介绍，等待的同时也在认识世界文化。",
+          "features.f6t": "精准倒计时",
+          "features.f6d": "清晰展示剩余天数，帮助你提前规划，不再错过关键时刻。",
+          "festivals.title": "全球节日，不止于“知道日期”",
+          "festivals.sub": "通过节日列表与介绍功能，你可以快速筛选想关注的节日，并将其一键加入个人倒计时，形成专属节奏表。",
+          "festivals.examplesTitle": "内置热门节日示例",
+          "festivals.example1": "元旦、春节、端午节、中秋节",
+          "festivals.example2": "情人节、国际妇女节、地球日",
+          "festivals.example3": "感恩节、万圣节、圣诞节",
+          "festivals.example4": "母亲节、父亲节、劳动节",
+          "users.title": "适合哪些人？",
+          "users.u1": "重视生活仪式感，想记录每个重要日子的你",
+          "users.u2": "容易忘记生日和纪念日，需要提醒与规划的你",
+          "users.u3": "管理项目与截止日期，希望清晰掌握时间的专业人士",
+          "users.u4": "热爱世界文化，想了解节日起源与习俗的学习者",
+          "cta.title": "告别遗忘，迎接期待",
+          "cta.text": "从现在开始，用 DayTicker 明智地规划时间，让每个重要日期都有被认真对待的意义。",
+          "cta.downloadAria": "前往 Google Play 下载 DayTicker",
+          "cta.downloadBtn": "前往 Google Play",
+          "support.title": "隐私政策 / 联系方式 / 常见问题",
+          "support.sub": "正式发布信息：我们重视用户数据安全与沟通反馈，欢迎通过邮箱联系建议、合作或问题反馈。",
+          "privacy.title": "隐私政策",
+          "privacy.prefix": "DayTicker 仅在功能必要范围内使用数据，并持续优化隐私与安全措施。",
+          "privacy.link": "查看隐私政策全文",
+          "privacy.suffix": "。",
+          "contact.title": "联系邮箱",
+          "contact.prefix": "反馈与合作请联系：",
+          "faq.title": "常见问题 FAQ",
+          "faq.q1": "1. 可以添加哪些倒计时类型？",
+          "faq.a1": "可添加生日、结婚纪念日、节日、项目截止日，以及任意自定义重要日期。",
+          "faq.q2": "2. 是否支持农历日期？",
+          "faq.a2": "支持。你可以根据习惯在公历与农历场景中进行记录与管理。",
+          "faq.q3": "3. 节日库覆盖哪些地区？",
+          "faq.a3": "内置覆盖中国、美国、英国、日本、韩国等国家和地区的传统与现代节日。",
+          "faq.q4": "4. 如何下载安装 DayTicker？",
+          "faq.a4": "点击页面中的 Google Play 按钮，即可跳转应用商店下载安装。",
+          "footer.tagline": "让每个日子都值得期待",
+          "footer.contact": "联系方式："
+        },
+        en: {
+          "site.title": "DayTicker - Countdown & Global Festivals",
+          "site.description": "DayTicker countdown app for birthdays, festivals, and anniversaries, with global holiday lists and cultural insights.",
+          "brand.aria": "DayTicker Home",
+          "nav.features": "Features",
+          "nav.festivals": "Festivals",
+          "nav.users": "Who It's For",
+          "nav.support": "Support & FAQ",
+          "nav.download": "Download",
+          "hero.eyebrow": "Countdowns × Global Festival Culture",
+          "hero.title": "Turn every important date<br>into something to look forward to",
+          "hero.lead": "DayTicker helps you add countdowns effortlessly. Track birthdays, anniversaries, holidays, or any important date, with both Gregorian and Lunar calendars plus global festival libraries and cultural introductions.",
+          "hero.downloadAria": "Download DayTicker on Google Play",
+          "hero.downloadBtn": "Download on Google Play",
+          "hero.featureBtn": "Explore Features",
+          "hero.meta": "Works on Android phones and tablets. This website is optimized for both desktop and mobile browsers.",
+          "preview.aria": "App screenshot preview",
+          "preview.title": "Real App Screenshots",
+          "preview.festivalAlt": "DayTicker festivals list screenshot",
+          "preview.festivalCaption": "Festivals Page",
+          "preview.countdownAlt": "DayTicker countdown list screenshot",
+          "preview.countdownCaption": "Countdown Page",
+          "features.title": "Why DayTicker?",
+          "features.sub": "More than date tracking: build your own rhythm of time with personal events and global festivals in one clean, visual app.",
+          "features.f1t": "Quick Add",
+          "features.f1d": "Create birthdays, anniversaries, holidays, or custom dates in just one tap.",
+          "features.f2t": "Dual Calendar Support",
+          "features.f2d": "Supports both Gregorian and Lunar calendars for different cultures and habits.",
+          "features.f3t": "Personalized Display",
+          "features.f3d": "Customize event colors and icons to keep your list vivid and organized.",
+          "features.f4t": "Global Festival Library",
+          "features.f4d": "Built-in festivals across China, the US, the UK, Japan, South Korea, and more.",
+          "features.f5t": "Cultural Insights",
+          "features.f5d": "Each festival includes background stories and customs to help you learn while you wait.",
+          "features.f6t": "Accurate Countdown",
+          "features.f6d": "Clear remaining-day display helps you plan ahead and never miss key dates.",
+          "festivals.title": "Global festivals, not just dates",
+          "festivals.sub": "Browse and discover festivals, then add them to your personal countdown list with one tap.",
+          "festivals.examplesTitle": "Popular Festivals Included",
+          "festivals.example1": "New Year's Day, Spring Festival, Dragon Boat Festival, Mid-Autumn Festival",
+          "festivals.example2": "Valentine's Day, International Women's Day, Earth Day",
+          "festivals.example3": "Thanksgiving, Halloween, Christmas",
+          "festivals.example4": "Mother's Day, Father's Day, Labor Day",
+          "users.title": "Who is it for?",
+          "users.u1": "People who value life rituals and important moments",
+          "users.u2": "People who often forget birthdays and anniversaries",
+          "users.u3": "Professionals managing projects and deadlines",
+          "users.u4": "Curious learners exploring cultures around the world",
+          "cta.title": "Stop forgetting, start anticipating",
+          "cta.text": "Start planning your time wisely with DayTicker, and give every important day the meaning it deserves.",
+          "cta.downloadAria": "Go to Google Play to download DayTicker",
+          "cta.downloadBtn": "Get it on Google Play",
+          "support.title": "Privacy / Contact / FAQ",
+          "support.sub": "Release-ready information: we value data security and user feedback. Feel free to contact us for suggestions or partnerships.",
+          "privacy.title": "Privacy Policy",
+          "privacy.prefix": "DayTicker uses data only when necessary for core functions and keeps improving privacy and security practices.",
+          "privacy.link": "Read the full Privacy Policy",
+          "privacy.suffix": ".",
+          "contact.title": "Contact Email",
+          "contact.prefix": "For feedback or collaboration:",
+          "faq.title": "FAQ",
+          "faq.q1": "1. What countdown types can I add?",
+          "faq.a1": "Birthdays, anniversaries, holidays, project deadlines, and any custom important date.",
+          "faq.q2": "2. Does it support Lunar calendar dates?",
+          "faq.a2": "Yes. You can manage dates in both Gregorian and Lunar calendar scenarios.",
+          "faq.q3": "3. Which regions are covered by the festival library?",
+          "faq.a3": "It includes traditional and modern festivals from China, the US, the UK, Japan, South Korea, and more.",
+          "faq.q4": "4. How do I install DayTicker?",
+          "faq.a4": "Use any Google Play button on this page to open the store and install the app.",
+          "footer.tagline": "Make every day worth anticipating",
+          "footer.contact": "Contact:"
+        }
+      };
+
+      var langKey = "dayticker_lang";
+
+      function getRegionFromLocale(localeString) {
+        if (!localeString || typeof Intl === "undefined" || !Intl.Locale) {
+          return "";
+        }
+        try {
+          return new Intl.Locale(localeString).region || "";
+        } catch (error) {
+          return "";
+        }
+      }
+
+      function detectChinaRegion() {
+        var locales = Array.isArray(navigator.languages) && navigator.languages.length
+          ? navigator.languages
+          : [navigator.language || ""];
+        var hasCNRegion = locales.some(function (loc) {
+          return getRegionFromLocale(loc).toUpperCase() === "CN";
+        });
+        if (hasCNRegion) {
+          return true;
+        }
+        var tz = "";
+        try {
+          tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+        } catch (error) {
+          tz = "";
+        }
+        var chinaTimezones = [
+          "Asia/Shanghai",
+          "Asia/Chongqing",
+          "Asia/Harbin",
+          "Asia/Urumqi"
+        ];
+        return chinaTimezones.indexOf(tz) >= 0;
+      }
+
+      function applyLang(lang) {
+        var dict = i18n[lang] || i18n.en;
+        document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+        document.title = dict["site.title"];
+        var desc = document.querySelector('meta[name="description"]');
+        if (desc) {
+          desc.setAttribute("content", dict["site.description"]);
+        }
+
+        document.querySelectorAll("[data-i18n]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n");
+          if (dict[key]) {
+            el.textContent = dict[key];
+          }
+        });
+        document.querySelectorAll("[data-i18n-html]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n-html");
+          if (dict[key]) {
+            el.innerHTML = dict[key];
+          }
+        });
+        document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n-aria");
+          if (dict[key]) {
+            el.setAttribute("aria-label", dict[key]);
+          }
+        });
+        document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
+          var key = el.getAttribute("data-i18n-alt");
+          if (dict[key]) {
+            el.setAttribute("alt", dict[key]);
+          }
+        });
+
+        var zhBtn = document.getElementById("lang-zh");
+        var enBtn = document.getElementById("lang-en");
+        if (zhBtn && enBtn) {
+          zhBtn.classList.toggle("active", lang === "zh");
+          enBtn.classList.toggle("active", lang === "en");
+        }
+      }
+
+      function initLang() {
+        var saved = localStorage.getItem(langKey);
+        var initial = saved === "zh" || saved === "en"
+          ? saved
+          : (detectChinaRegion() ? "zh" : "en");
+        applyLang(initial);
+      }
+
+      document.getElementById("lang-zh").addEventListener("click", function () {
+        localStorage.setItem(langKey, "zh");
+        applyLang("zh");
+      });
+      document.getElementById("lang-en").addEventListener("click", function () {
+        localStorage.setItem(langKey, "en");
+        applyLang("en");
+      });
+
+      initLang();
+    })();
+  </script>
 </body>
 </html>
