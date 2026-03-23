@@ -1,10 +1,626 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="zh-CN">
 <head>
-    <title>App Ads Verification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="DayTicker 倒数日 App：记录生日、节日、纪念日，支持公历和农历，内置全球节日介绍与一键添加。">
+  <title>DayTicker - 倒数日与全球节日助手</title>
+  <style>
+    :root {
+      --bg: #fff9f2;
+      --surface: #ffffff;
+      --text: #1f2328;
+      --muted: #5f6670;
+      --primary: #ff8a00;
+      --primary-dark: #e87400;
+      --line: #f1e7da;
+      --shadow: 0 10px 30px rgba(20, 20, 20, 0.08);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, var(--bg) 0%, #ffffff 400px, #ffffff 100%);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), 92vw);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(241, 231, 218, 0.8);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    .logo {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(140deg, #ff9f2f, #ff7a00);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(255, 136, 0, 0.35);
+      font-size: 16px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 64px 0 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #ffd6a5;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 13px;
+      color: #b15d00;
+      background: #fff3e5;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      line-height: 1.22;
+      font-size: clamp(30px, 5vw, 50px);
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(15px, 2vw, 18px);
+      max-width: 58ch;
+    }
+
+    .cta-row {
+      margin-top: 26px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 12px;
+      padding: 13px 20px;
+      font-weight: 600;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:focus-visible {
+      outline: 3px solid #ffd19a;
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(255, 136, 0, 0.28);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-ghost {
+      background: #fff;
+      border-color: #eadfce;
+      color: #302921;
+    }
+
+    .btn-ghost:hover {
+      background: #fff9ef;
+    }
+
+    .meta {
+      margin-top: 14px;
+      color: #6b7280;
+      font-size: 13px;
+    }
+
+    .preview {
+      background: linear-gradient(180deg, #fff, #fff7eb);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .preview-title {
+      margin: 0 0 14px;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .shot-card {
+      background: #ffffff;
+      border: 1px solid #f4ebdf;
+      border-radius: 14px;
+      padding: 8px;
+      box-shadow: 0 6px 18px rgba(30, 20, 0, 0.06);
+    }
+
+    .shot-card img {
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      aspect-ratio: 9 / 19.5;
+      object-fit: cover;
+      object-position: top;
+      background: #f6f1ea;
+    }
+
+    .shot-caption {
+      margin: 8px 4px 2px;
+      font-size: 13px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    section {
+      padding: 28px 0;
+    }
+
+    .section-head {
+      margin: 0 0 14px;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      margin: 0 0 26px;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 6px 20px rgba(50, 40, 20, 0.04);
+    }
+
+    .card h3 {
+      margin: 8px 0 8px;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: #5f6670;
+      font-size: 15px;
+    }
+
+    .card .icon {
+      font-size: 26px;
+      line-height: 1;
+    }
+
+    .list-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .list-panel {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+
+    .list-panel ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+    }
+
+    .list-panel li + li {
+      margin-top: 8px;
+    }
+
+    .cta {
+      padding: 30px 0 80px;
+    }
+
+    .cta-box {
+      background: linear-gradient(145deg, #fff3df, #ffe6bf);
+      border: 1px solid #ffd9a4;
+      border-radius: 24px;
+      padding: clamp(20px, 5vw, 34px);
+      display: grid;
+      grid-template-columns: 1.1fr auto;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .cta-title {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 3.3vw, 36px);
+      line-height: 1.2;
+    }
+
+    .cta-text {
+      margin: 0;
+      color: #5a4c3d;
+      max-width: 44ch;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 22px 0 28px;
+      color: #7a8089;
+      font-size: 14px;
+    }
+
+    .policy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .faq-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .faq-item h4 {
+      margin: 0 0 6px;
+      font-size: 16px;
+    }
+
+    .faq-item p {
+      margin: 0;
+      color: #5f6670;
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .list-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .policy-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .topbar-inner {
+        min-height: 58px;
+      }
+
+      .nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 38px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preview-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .cta-row {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Verification File Hosting</h1>
-    <p>This domain is used for app-ads.txt verification.</p>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top" aria-label="DayTicker 首页">
+        <span class="logo">⏳</span>
+        <span>DayTicker</span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#features">核心功能</a>
+        <a href="#festivals">节日亮点</a>
+        <a href="#users">适用人群</a>
+        <a href="#support">支持与 FAQ</a>
+        <a href="#download">立即下载</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">倒数日 × 全球节日文化</span>
+          <h1>把每个重要日子，<br>都变成值得期待的时刻</h1>
+          <p class="lead">
+            DayTicker 是一款轻松添加倒计时的应用程序。快速记录生日、结婚纪念日、节日和任意重要日期，
+            支持公历与农历，并提供全球节日库与详细文化介绍，让时间管理更清晰、更有仪式感。
+          </p>
+          <div class="cta-row">
+            <a
+              class="btn btn-primary"
+              href="https://play.google.com/store/apps/details?id=com.deqiutseng.luckyday"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="在 Google Play 下载 DayTicker">
+              <span aria-hidden="true">▶</span>
+              <span>Google Play 下载</span>
+            </a>
+            <a class="btn btn-ghost" href="#features">查看功能亮点</a>
+          </div>
+          <p class="meta">支持 Android 手机与平板，网页在桌面浏览器和手机浏览器均可顺畅浏览。</p>
+        </div>
+
+        <aside class="preview" aria-label="应用截图预览">
+          <p class="preview-title">应用真实界面预览</p>
+          <div class="preview-grid">
+            <figure class="shot-card">
+              <img src="./assets/images/app-festivals.png" alt="DayTicker 节日列表页面截图">
+              <figcaption class="shot-caption">节日列表页</figcaption>
+            </figure>
+            <figure class="shot-card">
+              <img src="./assets/images/app-countdowns.png" alt="DayTicker 倒计时列表页面截图">
+              <figcaption class="shot-caption">倒计时列表页</figcaption>
+            </figure>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <h2 class="section-head">为什么选择 DayTicker？</h2>
+        <p class="section-sub">
+          不只是记录日期，更是帮你建立“时间节奏感”。从个人纪念日到世界节日，一站式管理、清晰展示、轻松添加。
+        </p>
+
+        <div class="feature-grid">
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>快速添加</h3>
+            <p>一键创建生日、纪念日、节日或任意重要日期，操作简单直观。</p>
+          </article>
+          <article class="card">
+            <div class="icon">🗓️</div>
+            <h3>双历法支持</h3>
+            <p>同时支持公历与农历，满足不同文化场景和个人习惯。</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎨</div>
+            <h3>个性化展示</h3>
+            <p>自定义事件颜色与图标，让倒计时列表更清晰、更有活力。</p>
+          </article>
+          <article class="card">
+            <div class="icon">🌐</div>
+            <h3>全球节日合集</h3>
+            <p>内置海量节日库，覆盖中国、美国、英国、日本、韩国等国家和地区。</p>
+          </article>
+          <article class="card">
+            <div class="icon">📚</div>
+            <h3>节日文化解读</h3>
+            <p>每个节日附带背景与习俗介绍，等待的同时也在认识世界文化。</p>
+          </article>
+          <article class="card">
+            <div class="icon">🎯</div>
+            <h3>精准倒计时</h3>
+            <p>清晰展示剩余天数，帮助你提前规划，不再错过关键时刻。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="festivals">
+      <div class="container">
+        <h2 class="section-head">全球节日，不止于“知道日期”</h2>
+        <p class="section-sub">
+          通过节日列表与介绍功能，你可以快速筛选想关注的节日，并将其一键加入个人倒计时，形成专属节奏表。
+        </p>
+        <div class="list-wrap">
+          <article class="list-panel">
+            <h3>内置热门节日示例</h3>
+            <ul>
+              <li>元旦、春节、端午节、中秋节</li>
+              <li>情人节、国际妇女节、地球日</li>
+              <li>感恩节、万圣节、圣诞节</li>
+              <li>母亲节、父亲节、劳动节</li>
+            </ul>
+          </article>
+          <article class="list-panel" id="users">
+            <h3>适合哪些人？</h3>
+            <ul>
+              <li>重视生活仪式感，想记录每个重要日子的你</li>
+              <li>容易忘记生日和纪念日，需要提醒与规划的你</li>
+              <li>管理项目与截止日期，希望清晰掌握时间的专业人士</li>
+              <li>热爱世界文化，想了解节日起源与习俗的学习者</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="download">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2 class="cta-title">告别遗忘，迎接期待</h2>
+            <p class="cta-text">
+              从现在开始，用 DayTicker 明智地规划时间，让每个重要日期都有被认真对待的意义。
+            </p>
+          </div>
+          <a
+            class="btn btn-primary"
+            href="https://play.google.com/store/apps/details?id=com.deqiutseng.luckyday"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="前往 Google Play 下载 DayTicker">
+            <span aria-hidden="true">▶</span>
+            <span>前往 Google Play</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="support">
+      <div class="container">
+        <h2 class="section-head">隐私政策 / 联系方式 / 常见问题</h2>
+        <p class="section-sub">
+          正式发布信息：我们重视用户数据安全与沟通反馈，欢迎通过邮箱联系建议、合作或问题反馈。
+        </p>
+        <div class="policy-grid">
+          <article class="card">
+            <div class="icon">🔒</div>
+            <h3>隐私政策</h3>
+            <p>
+              DayTicker 仅在功能必要范围内使用数据，并持续优化隐私与安全措施。
+              <a href="https://sites.google.com/view/appdaytickerprivacypolicy" target="_blank" rel="noopener noreferrer">查看隐私政策全文</a>。
+            </p>
+          </article>
+          <article class="card">
+            <div class="icon">✉️</div>
+            <h3>联系邮箱</h3>
+            <p>
+              反馈与合作请联系：
+              <a href="mailto:deqiutseng@gmail.com">deqiutseng@gmail.com</a>
+            </p>
+          </article>
+        </div>
+
+        <div class="list-panel" style="margin-top:16px;">
+          <h3>常见问题 FAQ</h3>
+          <ul class="faq-list">
+            <li class="faq-item">
+              <h4>1. 可以添加哪些倒计时类型？</h4>
+              <p>可添加生日、结婚纪念日、节日、项目截止日，以及任意自定义重要日期。</p>
+            </li>
+            <li class="faq-item">
+              <h4>2. 是否支持农历日期？</h4>
+              <p>支持。你可以根据习惯在公历与农历场景中进行记录与管理。</p>
+            </li>
+            <li class="faq-item">
+              <h4>3. 节日库覆盖哪些地区？</h4>
+              <p>内置覆盖中国、美国、英国、日本、韩国等国家和地区的传统与现代节日。</p>
+            </li>
+            <li class="faq-item">
+              <h4>4. 如何下载安装 DayTicker？</h4>
+              <p>点击页面中的 Google Play 按钮，即可跳转应用商店下载安装。</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>DayTicker</strong> · 让每个日子都值得期待 · 联系方式：
+      <a href="mailto:deqiutseng@gmail.com">deqiutseng@gmail.com</a>
+    </div>
+  </footer>
 </body>
 </html>
