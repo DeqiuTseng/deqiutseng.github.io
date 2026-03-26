@@ -71,13 +71,9 @@
     .logo {
       width: 34px;
       height: 34px;
-      border-radius: 10px;
-      background: linear-gradient(140deg, #ff9f2f, #ff7a00);
-      display: grid;
-      place-items: center;
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(255, 136, 0, 0.35);
-      font-size: 16px;
+      border-radius: 5px;
+      object-fit: contain;
+      display: block;
     }
 
     .nav {
@@ -446,7 +442,7 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#top" aria-label="DayTicker 首页" data-i18n-aria="brand.aria">
-        <span class="logo">⏳</span>
+        <img class="logo" src="assets/images/logo.png" alt="DayTicker logo">
         <span>DayTicker</span>
       </a>
       <nav class="nav" aria-label="主导航">
@@ -493,11 +489,11 @@
           <p class="preview-title" data-i18n="preview.title">应用真实界面预览</p>
           <div class="preview-grid">
             <figure class="shot-card">
-              <img src="./assets/images/app-festivals.png" alt="DayTicker 节日列表页面截图" data-i18n-alt="preview.festivalAlt">
+              <img src="./assets/images/app-festivals.avif" alt="DayTicker 节日列表页面截图" data-i18n-alt="preview.festivalAlt">
               <figcaption class="shot-caption" data-i18n="preview.festivalCaption">节日列表页</figcaption>
             </figure>
             <figure class="shot-card">
-              <img src="./assets/images/app-countdowns.png" alt="DayTicker 倒计时列表页面截图" data-i18n-alt="preview.countdownAlt">
+              <img src="./assets/images/app-countdowns.avif" alt="DayTicker 倒计时列表页面截图" data-i18n-alt="preview.countdownAlt">
               <figcaption class="shot-caption" data-i18n="preview.countdownCaption">倒计时列表页</figcaption>
             </figure>
           </div>
