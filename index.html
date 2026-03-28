@@ -3,8 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="DayTicker countdown app for birthdays, festivals, and anniversaries.">
-  <title>DayTicker - 倒数日与全球节日助手</title>
+  <meta name="description" content="DayTicker 倒数日 App：记录生日、纪念日、节日与重要日程，支持公历/农历、全球节日库与文化介绍，帮你不错过每个重要日子。">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="DayTicker">
+  <meta property="og:title" content="DayTicker 倒数日 App - 生日纪念日倒计时与全球节日助手">
+  <meta property="og:description" content="记录生日、纪念日、节日与重要日程，支持公历/农历与全球节日文化介绍。下载 DayTicker，让每个重要日子都值得期待。">
+  <meta property="og:url" content="https://deqiutseng.github.io/">
+  <meta property="og:image" content="https://deqiutseng.github.io/assets/images/logo.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DayTicker 倒数日 App - 生日纪念日倒计时与全球节日助手">
+  <meta name="twitter:description" content="记录生日、纪念日、节日与重要日程，支持公历/农历与全球节日文化介绍。下载 DayTicker，让每个重要日子都值得期待。">
+  <meta name="twitter:image" content="https://deqiutseng.github.io/assets/images/logo.png">
+  <title>DayTicker 倒数日 App - 生日纪念日倒计时与全球节日助手</title>
   <style>
     :root {
       --bg: #fff9f2;
@@ -702,8 +713,8 @@
     (function () {
       var i18n = {
         zh: {
-          "site.title": "DayTicker - 倒数日与全球节日助手",
-          "site.description": "DayTicker 倒数日 App：记录生日、节日、纪念日，支持公历和农历，内置全球节日介绍与一键添加。",
+          "site.title": "DayTicker 倒数日 App - 生日纪念日倒计时与全球节日助手",
+          "site.description": "DayTicker 倒数日 App：记录生日、纪念日、节日与重要日程，支持公历/农历、全球节日库与文化介绍，帮你不错过每个重要日子。",
           "brand.aria": "DayTicker 首页",
           "nav.features": "核心功能",
           "nav.festivals": "节日亮点",
@@ -780,8 +791,8 @@
           "footer.sdk": "第三方SDK列表"
         },
         en: {
-          "site.title": "DayTicker - Countdown & Global Festivals",
-          "site.description": "DayTicker countdown app for birthdays, festivals, and anniversaries, with global holiday lists and cultural insights.",
+          "site.title": "DayTicker Countdown App - Birthdays, Anniversaries & Global Festivals",
+          "site.description": "Track birthdays, anniversaries, festivals, and important dates with DayTicker. Supports Gregorian and Lunar calendars with global holiday lists and cultural insights.",
           "brand.aria": "DayTicker Home",
           "nav.features": "Features",
           "nav.festivals": "Festivals",
@@ -904,6 +915,22 @@
         var desc = document.querySelector('meta[name="description"]');
         if (desc) {
           desc.setAttribute("content", dict["site.description"]);
+        }
+        var ogTitle = document.querySelector('meta[property="og:title"]');
+        if (ogTitle) {
+          ogTitle.setAttribute("content", dict["site.title"]);
+        }
+        var ogDesc = document.querySelector('meta[property="og:description"]');
+        if (ogDesc) {
+          ogDesc.setAttribute("content", dict["site.description"]);
+        }
+        var twitterTitle = document.querySelector('meta[name="twitter:title"]');
+        if (twitterTitle) {
+          twitterTitle.setAttribute("content", dict["site.title"]);
+        }
+        var twitterDesc = document.querySelector('meta[name="twitter:description"]');
+        if (twitterDesc) {
+          twitterDesc.setAttribute("content", dict["site.description"]);
         }
 
         document.querySelectorAll("[data-i18n]").forEach(function (el) {
