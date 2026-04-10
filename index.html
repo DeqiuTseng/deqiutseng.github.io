@@ -133,6 +133,10 @@
       align-items: center;
     }
 
+    .hero-grid > * {
+      min-width: 0;
+    }
+
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -166,6 +170,7 @@
       align-items: center;
       gap: 14px;
       flex-wrap: wrap;
+      max-width: 100%;
     }
 
     .btn {
@@ -178,6 +183,15 @@
       font-weight: 600;
       transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
       border: 1px solid transparent;
+      max-width: 100%;
+    }
+
+    .store-icon {
+      width: 18px;
+      height: 18px;
+      display: block;
+      object-fit: contain;
+      flex-shrink: 0;
     }
 
     .btn:focus-visible {
@@ -214,6 +228,17 @@
 
     .btn-appstore:hover {
       background: #0f1216;
+      transform: translateY(-1px);
+    }
+
+    .btn-apk {
+      background: #4ea431;
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(78, 164, 49, 0.24);
+    }
+
+    .btn-apk:hover {
+      background: #3f8d28;
       transform: translateY(-1px);
     }
 
@@ -347,9 +372,15 @@
       border-radius: 24px;
       padding: clamp(20px, 5vw, 34px);
       display: grid;
-      grid-template-columns: 1.1fr auto;
+      /* minmax(0, …) 避免 Safari 中 grid 子项 min-content 把整行撑出父级 */
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, min(100%, 280px));
       gap: 16px;
       align-items: center;
+      min-width: 0;
+    }
+
+    .cta-box > * {
+      min-width: 0;
     }
 
     .cta-buttons {
@@ -357,7 +388,16 @@
       flex-direction: column;
       gap: 14px;
       align-items: stretch;
-      min-width: min(100%, 260px);
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+    }
+
+    .cta-buttons .btn {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
 
     @media (min-width: 981px) {
@@ -540,7 +580,7 @@
               rel="noopener noreferrer"
               aria-label="在 Google Play 下载 DayTicker"
               data-i18n-aria="hero.downloadAria">
-              <span aria-hidden="true">▶</span>
+              <img class="store-icon" src="./assets/images/GooglePlay.png" alt="" aria-hidden="true">
               <span data-i18n="hero.downloadBtn">Google Play 下载</span>
             </a>
             <a
@@ -550,7 +590,16 @@
               rel="noopener noreferrer"
               aria-label="在 App Store 下载 DayTicker"
               data-i18n-aria="hero.appstoreAria">
+              <img class="store-icon" src="./assets/images/AppStore.png" alt="" aria-hidden="true">
               <span data-i18n="hero.appstoreBtn">App Store 下载</span>
+            </a>
+            <a
+              class="btn btn-apk"
+              href="./assets/apk/dayticker.apk"
+              aria-label="下载 DayTicker APK 安装包"
+              data-i18n-aria="hero.apkAria">
+              <img class="store-icon" src="./assets/images/apk.png" alt="" aria-hidden="true">
+              <span data-i18n="hero.apkBtn">APK 下载</span>
             </a>
             <a class="btn btn-ghost" href="#features" data-i18n="hero.featureBtn">查看功能亮点</a>
           </div>
@@ -661,7 +710,7 @@
               rel="noopener noreferrer"
               aria-label="前往 Google Play 下载 DayTicker"
               data-i18n-aria="cta.downloadAria">
-              <span aria-hidden="true">▶</span>
+              <img class="store-icon" src="./assets/images/GooglePlay.png" alt="" aria-hidden="true">
               <span data-i18n="cta.downloadBtn">前往 Google Play</span>
             </a>
             <a
@@ -671,7 +720,16 @@
               rel="noopener noreferrer"
               aria-label="前往 App Store 下载 DayTicker"
               data-i18n-aria="cta.appstoreAria">
+              <img class="store-icon" src="./assets/images/AppStore.png" alt="" aria-hidden="true">
               <span data-i18n="cta.appstoreBtn">前往 App Store</span>
+            </a>
+            <a
+              class="btn btn-apk"
+              href="./assets/apk/dayticker.apk"
+              aria-label="下载 DayTicker APK 安装包"
+              data-i18n-aria="cta.apkAria">
+              <img class="store-icon" src="./assets/images/apk.png" alt="" aria-hidden="true">
+              <span data-i18n="cta.apkBtn">下载 APK</span>
             </a>
           </div>
         </div>
@@ -763,6 +821,8 @@
           "hero.downloadBtn": "Google Play 下载",
           "hero.appstoreAria": "在 App Store 下载 DayTicker",
           "hero.appstoreBtn": "App Store 下载",
+          "hero.apkAria": "下载 DayTicker APK 安装包",
+          "hero.apkBtn": "APK 下载",
           "hero.featureBtn": "查看功能亮点",
           "hero.meta": "支持 Android 与 iPhone，网页在桌面浏览器和手机浏览器均可顺畅浏览。",
           "preview.aria": "应用截图预览",
@@ -803,6 +863,8 @@
           "cta.downloadBtn": "前往 Google Play",
           "cta.appstoreAria": "前往 App Store 下载 DayTicker",
           "cta.appstoreBtn": "前往 App Store",
+          "cta.apkAria": "下载 DayTicker APK 安装包",
+          "cta.apkBtn": "下载 APK",
           "support.title": "隐私政策 / 联系方式 / 常见问题",
           "support.sub": "正式发布信息：我们重视用户数据安全与沟通反馈，欢迎通过邮箱联系建议、合作或问题反馈。",
           "privacy.title": "隐私政策",
@@ -841,6 +903,8 @@
           "hero.downloadBtn": "Download on Google Play",
           "hero.appstoreAria": "Download DayTicker on the App Store",
           "hero.appstoreBtn": "Download on the App Store",
+          "hero.apkAria": "Download DayTicker APK package",
+          "hero.apkBtn": "Download APK",
           "hero.featureBtn": "Explore Features",
           "hero.meta": "Available on Android and iPhone. This website is optimized for both desktop and mobile browsers.",
           "preview.aria": "App screenshot preview",
@@ -881,6 +945,8 @@
           "cta.downloadBtn": "Get it on Google Play",
           "cta.appstoreAria": "Go to the App Store to download DayTicker",
           "cta.appstoreBtn": "Get it on the App Store",
+          "cta.apkAria": "Download DayTicker APK package",
+          "cta.apkBtn": "Download APK",
           "support.title": "Privacy / Contact / FAQ",
           "support.sub": "Release-ready information: we value data security and user feedback. Feel free to contact us for suggestions or partnerships.",
           "privacy.title": "Privacy Policy",
