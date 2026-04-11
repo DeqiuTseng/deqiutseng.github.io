@@ -1,0 +1,166 @@
+export const qingmingFestivalConfig = {
+  slug: "qingming",
+  brandUrl: "https://dayticker.net",
+  theme: {
+    bgMain: "#F4F4F2",
+    bgHero: "#EDEEEE",
+    bgSoft: "#F1F1EE",
+    bgCard: "rgba(255, 255, 255, 0.85)",
+    textStrong: "#2C302F",
+    textBody: "#666D6A",
+    textSoft: "#6C7370",
+    textOnDark: "#DCE0E0",
+    accentPrimary: "#59615E",
+    accentStrong: "#2E2E2B",
+    footerBg: "#2F3335",
+    lineSoft: "#D4DED0",
+    lineCard: "#D9DDDB",
+    noteColor: "#6A7370",
+    shadowSoft: "0 20px 48px rgba(64, 72, 68, 0.08)",
+    bodyAccent: "rgba(214, 220, 217, 0.76)",
+    heroOrb: "rgba(202, 211, 208, 0.72)",
+    pageOrb: "rgba(235, 238, 236, 0.88)",
+    heroTitle: "#2C302F",
+    sectionTitle: "#2F3432",
+    sectionKicker: "#4E5F57",
+    badgeBg: "#E3E6E4",
+    badgeMutedBg: "#E9EBEA",
+    habitBg: "#F8F8F6",
+    habitBorder: "#D5D5D0",
+    habitTitle: "#2E2E2B",
+  },
+  images: {
+    hero: {
+      avif: "./assets/hero-qingming.avif",
+      fallback: "./assets/hero-qingming.webp",
+      width: 920,
+      height: 600,
+    },
+    origins: {
+      avif: "./assets/origins-qingming.avif",
+      fallback: "./assets/origins-qingming.webp",
+      width: 1400,
+      height: 720,
+    },
+    customs: [
+      {
+        avif: "./assets/custom-qingming-1.avif",
+        fallback: "./assets/custom-qingming-1.webp",
+        width: 840,
+        height: 440,
+      },
+      {
+        avif: "./assets/custom-qingming-2.avif",
+        fallback: "./assets/custom-qingming-2.webp",
+        width: 840,
+        height: 440,
+      },
+    ],
+  },
+  translations: {
+    zh: {
+      pageTitle: "DayTicker",
+      pageDescription: "清明节专题网页，介绍清明节的节气内涵、历史源流与民间习俗。",
+      heroEyebrow: "清明节 · 中国传统节气与节日",
+      heroTitle: "风清景明，慎终追远：走进清明节",
+      heroLead:
+        "通过图文了解清明节的节气内涵、历史源流与民间习俗，感受中华文化中追思先人、亲近自然的精神传统。",
+      heroBadges: [
+        { text: "节日起源", href: "#origins", variant: "primary" },
+        { text: "传统习俗", href: "#customs", variant: "muted" },
+        { text: "公历4月4日-6日前后", variant: "primary" },
+        { text: "二十四节气", variant: "muted" },
+      ],
+      heroImageAlt: "清明时节的春日祭扫与自然景象",
+      originsEyebrow: "节日起源 · Qingming Origins",
+      originsTitle: "清明节起源与历史背景",
+      originsIntro: "从春季节气到礼俗节日，理解清明在中华文化中的自然观与伦理观。",
+      originsImageAlt: "清明节相关的春日供品与自然景象",
+      originsCaption: "春和景明与慎终追远，构成清明节的核心文化意象。",
+      originCardTitle: "起源脉络",
+      originCardBody:
+        "清明最早是反映季节变化的节气，后与寒食、上巳等古俗融合，逐步形成兼具祭祖追思与春游踏青的综合性节日。它强调尊祖敬宗、家族记忆与顺时而作的生活智慧。",
+      originPatternText: "柳色新绿与春日风物，象征清明时节的清朗、生长与追思。",
+      historyCardTitle: "历史演进",
+      historyCardBody:
+        "魏晋至唐宋时期，清明祭扫礼俗逐渐制度化并广泛传播。明清以来，扫墓、插柳、踏青、放风筝等习俗在各地形成多样实践，近现代则在公共纪念与家庭祭祀中延续其文化价值。",
+      historyPoint1: "魏晋至唐宋：祭扫礼俗逐渐制度化并广泛传播",
+      historyPoint2: "明清至近现代：扫墓、踏青等习俗延续并不断丰富",
+      customsEyebrow: "清明节传统习俗",
+      customsTitle: "从追思到踏春：清明里的礼俗与生机",
+      customsIntro:
+        "清明既是慎终追远的祭祀时节，也是亲近自然的春日节令。扫墓祭祖、踏青出游，以及插柳或放风筝，共同构成了这一节日的文化记忆与生活美学。",
+      habit1Title: "① 扫墓祭祖",
+      habit1Body:
+        "人们在清明前后祭扫先人、培土献花，以庄重仪式表达追思，延续家族记忆与孝亲传统。",
+      habit2Title: "② 踏青郊游",
+      habit2Body:
+        "春和景明之际结伴出游，在山野间赏花听风、舒展身心，寓意辞旧迎新、感受万物生长。",
+      habit3Title: "③ 插柳 / 放风筝",
+      habit3Body:
+        "插柳寄托迎春纳福与辟邪祈安，放风筝则寓意放走晦气、迎来清朗，是清明最具春意的民俗之一。",
+      customDragonBoatAlt: "清明时节郊野踏青景象",
+      customZongziAlt: "清明祭扫与春日供品场景",
+      footerTitle: "清明追思 · Qingming Festival",
+      footerSubtitle: "春和景明，念故人，也念来处。",
+      footerOrigins: "节日起源",
+      footerCustoms: "传统习俗",
+      footerCulture: "文化传承",
+      footerSite: "DayTicker 官网",
+    },
+    en: {
+      pageTitle: "DayTicker",
+      pageDescription:
+        "A special page introducing Qingming Festival, including its seasonal meaning, historical roots, and traditional customs.",
+      heroEyebrow: "Qingming Festival · Traditional Solar Term and Festival",
+      heroTitle: "Clear Skies, Bright Spring: Enter the Qingming Festival",
+      heroLead:
+        "Explore Qingming through text and imagery, from its meaning as a solar term to its historical development and living customs, and experience the Chinese tradition of remembrance and closeness to nature.",
+      heroBadges: [
+        { text: "Origins", href: "#origins", variant: "primary" },
+        { text: "Customs", href: "#customs", variant: "muted" },
+        { text: "Around April 4 to 6", variant: "primary" },
+        { text: "24 Solar Terms", variant: "muted" },
+      ],
+      heroImageAlt: "Spring remembrance and seasonal scenery during Qingming",
+      originsEyebrow: "Festival Origins · Qingming Origins",
+      originsTitle: "Origins and Historical Background of Qingming",
+      originsIntro:
+        "Understand Qingming as both a spring solar term and a ritual festival shaped by Chinese views of nature and ethics.",
+      originsImageAlt: "Spring offerings and natural scenery associated with Qingming",
+      originsCaption:
+        "Bright spring scenery and remembrance of ancestors form the core imagery of Qingming.",
+      originCardTitle: "Origin Pathways",
+      originCardBody:
+        "Qingming began as a solar term marking seasonal change, then gradually merged with older customs such as Hanshi and Shangsi into a festival that combines ancestral remembrance with spring outings. It reflects reverence for family lineage, collective memory, and living in harmony with the seasons.",
+      originPatternText:
+        "Fresh willow green and springtime motifs symbolize clarity, renewal, and remembrance in the Qingming season.",
+      historyCardTitle: "Historical Development",
+      historyCardBody:
+        "From the Wei, Jin, Tang, and Song periods onward, Qingming tomb-sweeping rituals became more formalized and widely practiced. During the Ming and Qing eras, customs such as grave sweeping, willow wearing, spring outings, and kite flying developed regional variety and remained meaningful into modern life.",
+      historyPoint1: "Wei to Song: remembrance rituals became formalized and widespread",
+      historyPoint2: "Ming to modern era: grave sweeping and spring customs continued to evolve",
+      customsEyebrow: "Traditional Customs",
+      customsTitle: "From Remembrance to Spring Outings: Life in Qingming",
+      customsIntro:
+        "Qingming is both a season for honoring ancestors and a spring festival of renewal. Grave sweeping, outdoor excursions, willow customs, and kite flying together shape its cultural memory and everyday beauty.",
+      habit1Title: "1. Grave Sweeping and Ancestral Tribute",
+      habit1Body:
+        "Families visit ancestral graves, tend the earth, and offer flowers or food, expressing remembrance while carrying forward family memory and filial respect.",
+      habit2Title: "2. Spring Outings",
+      habit2Body:
+        "People go outdoors in the bright spring season to enjoy blossoms, fields, and fresh air, welcoming renewal and the vitality of nature.",
+      habit3Title: "3. Willow Branches and Kite Flying",
+      habit3Body:
+        "Willow customs symbolize blessing and protection, while kite flying suggests releasing gloom and welcoming a clear, open season.",
+      customDragonBoatAlt: "Spring outing scenery during Qingming Festival",
+      customZongziAlt: "Remembrance offerings and spring seasonal scene for Qingming",
+      footerTitle: "Qingming Remembrance · Qingming Festival",
+      footerSubtitle: "In bright spring, we remember those before us and the paths we came from.",
+      footerOrigins: "Origins",
+      footerCustoms: "Customs",
+      footerCulture: "Culture",
+      footerSite: "DayTicker Official Site",
+    },
+  },
+};

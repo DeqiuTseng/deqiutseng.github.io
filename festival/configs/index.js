@@ -1,7 +1,9 @@
 import { dragonBoatFestivalConfig } from "./dragonboat.js";
+import { qingmingFestivalConfig } from "./qingming.js";
 
 export const festivalConfigs = {
   [dragonBoatFestivalConfig.slug]: dragonBoatFestivalConfig,
+  [qingmingFestivalConfig.slug]: qingmingFestivalConfig,
 };
 
 export function getFestivalSlugFromPath(pathname) {

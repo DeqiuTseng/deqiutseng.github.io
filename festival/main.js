@@ -23,6 +23,41 @@ function ResponsiveImage({ avif, fallback, alt, width, height, eager = false }) 
   );
 }
 
+function getThemeStyle(theme) {
+  if (!theme) {
+    return {};
+  }
+
+  return {
+    "--bg-main": theme.bgMain,
+    "--bg-hero": theme.bgHero,
+    "--bg-soft": theme.bgSoft,
+    "--bg-card": theme.bgCard,
+    "--text-strong": theme.textStrong,
+    "--text-body": theme.textBody,
+    "--text-soft": theme.textSoft,
+    "--text-on-dark": theme.textOnDark,
+    "--green-700": theme.accentPrimary,
+    "--green-800": theme.accentStrong,
+    "--green-900": theme.footerBg,
+    "--line-soft": theme.lineSoft,
+    "--line-card": theme.lineCard,
+    "--blue-note": theme.noteColor,
+    "--shadow-soft": theme.shadowSoft,
+    "--body-accent": theme.bodyAccent,
+    "--hero-orb": theme.heroOrb,
+    "--page-orb": theme.pageOrb,
+    "--hero-title": theme.heroTitle,
+    "--section-title": theme.sectionTitle,
+    "--section-kicker": theme.sectionKicker,
+    "--badge-bg": theme.badgeBg,
+    "--badge-muted-bg": theme.badgeMutedBg,
+    "--habit-bg": theme.habitBg,
+    "--habit-border": theme.habitBorder,
+    "--habit-title": theme.habitTitle,
+  };
+}
+
 function HeroSection({ copy, heroImage }) {
   const badges = copy.heroBadges || [copy.badgeOrigins, copy.badgeCustoms];
 
@@ -269,6 +304,13 @@ function FestivalPage({ config, lang }) {
   const copy = config.translations[lang] || config.translations.zh;
 
   useEffect(() => {
+    const themeStyle = getThemeStyle(config.theme);
+    Object.entries(themeStyle).forEach(([key, value]) => {
+      if (value) {
+        document.documentElement.style.setProperty(key, value);
+      }
+    });
+
     document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
     document.title = "DayTicker";
 
@@ -276,7 +318,13 @@ function FestivalPage({ config, lang }) {
     if (metaDescription) {
       metaDescription.setAttribute("content", copy.pageDescription);
     }
-  }, [copy, lang]);
+
+    return () => {
+      Object.keys(themeStyle).forEach((key) => {
+        document.documentElement.style.removeProperty(key);
+      });
+    };
+  }, [config.theme, copy, lang]);
 
   return React.createElement(
     "div",

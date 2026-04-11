@@ -15,6 +15,17 @@
   --line-card: #e8e6e1;
   --blue-note: #3d5a80;
   --shadow-soft: 0 20px 48px rgba(41, 63, 42, 0.08);
+  --body-accent: rgba(216, 232, 210, 0.72);
+  --hero-orb: rgba(194, 217, 182, 0.62);
+  --page-orb: rgba(238, 244, 232, 0.88);
+  --hero-title: var(--text-strong);
+  --section-title: #2d2d2d;
+  --section-kicker: var(--green-700);
+  --badge-bg: #d8e8d2;
+  --badge-muted-bg: #e6efe2;
+  --habit-bg: #fff;
+  --habit-border: #dde6d9;
+  --habit-title: var(--green-800);
   --radius-panel: 28px;
   --radius-card: 18px;
   --radius-media: 12px;
@@ -39,7 +50,7 @@ body {
   margin: 0;
   min-width: 320px;
   background:
-    radial-gradient(circle at top right, rgba(216, 232, 210, 0.72), transparent 34%),
+    radial-gradient(circle at top right, var(--body-accent), transparent 34%),
     linear-gradient(180deg, #fbfaf7 0%, var(--bg-main) 46%, #f4f1eb 100%);
   color: var(--text-strong);
   font-family: var(--font-sans);
@@ -96,7 +107,7 @@ picture {
   width: 360px;
   height: 360px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(194, 217, 182, 0.62), transparent 72%);
+  background: radial-gradient(circle, var(--hero-orb), transparent 72%);
 }
 
 .page-shell::after {
@@ -105,7 +116,7 @@ picture {
   width: 320px;
   height: 320px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(238, 244, 232, 0.88), transparent 70%);
+  background: radial-gradient(circle, var(--page-orb), transparent 70%);
 }
 
 .festival-page,
@@ -154,7 +165,7 @@ picture {
 
 .hero h1 {
   max-width: 12ch;
-  color: var(--text-strong);
+  color: var(--hero-title);
   font-size: clamp(2.3rem, 4vw, 2.875rem);
   line-height: 1.1;
   font-weight: 500;
@@ -182,7 +193,7 @@ picture {
   min-height: 36px;
   padding: 6px 12px;
   border-radius: 999px;
-  background: #d8e8d2;
+  background: var(--badge-bg);
   color: var(--green-700);
   font-family: var(--font-mono);
   font-size: 12px;
@@ -190,7 +201,7 @@ picture {
 }
 
 .badge--muted {
-  background: #e6efe2;
+  background: var(--badge-muted-bg);
 }
 
 .framed-media {
@@ -227,7 +238,7 @@ picture {
 }
 
 .section__eyebrow {
-  color: var(--green-700);
+  color: var(--section-kicker);
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
@@ -238,7 +249,7 @@ picture {
 }
 
 .section h2 {
-  color: #2d2d2d;
+  color: var(--section-title);
   font-size: clamp(1.95rem, 3vw, 2.125rem);
   line-height: 1.22;
   font-weight: 500;
@@ -355,13 +366,13 @@ picture {
   display: grid;
   gap: 6px;
   padding: 14px 16px;
-  border: 1px solid #dde6d9;
+  border: 1px solid var(--habit-border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--habit-bg);
 }
 
 .habit-card h3 {
-  color: var(--green-800);
+  color: var(--habit-title);
   font-size: 16px;
 }
 
