@@ -50,6 +50,7 @@ function getThemeStyle(theme) {
     "--habit-bg": theme.habitBg,
     "--habit-border": theme.habitBorder,
     "--habit-title": theme.habitTitle,
+    "--footer-top-line": theme.footerTopLine,
   };
 }
 
@@ -68,33 +69,31 @@ function HeroSection({ copy, heroImage }) {
       React.createElement(
         "div",
         { className: "hero__badges", "aria-label": "festival sections" },
-        ...badges.map((badge, index) =>
-          (() => {
-            const badgeClass =
-              badge.variant === "muted" || (!badge.variant && index % 2 === 1)
-                ? "badge badge--muted"
-                : "badge";
+        ...badges.map((badge, index) => {
+          const badgeClass =
+            badge.variant === "muted" || (!badge.variant && index % 2 === 1)
+              ? "badge badge--muted"
+              : "badge";
 
-            return badge.href
-              ? React.createElement(
-                  "a",
-                  {
-                    key: badge.text + index,
-                    href: badge.href,
-                    className: badgeClass,
-                  },
-                  badge.text,
-                )
-              : React.createElement(
-                  "span",
-                  {
-                    key: badge.text + index,
-                    className: badgeClass,
-                  },
-                  badge.text,
-                );
-          })(),
-        ),
+          return badge.href
+            ? React.createElement(
+                "a",
+                {
+                  key: badge.text + index,
+                  href: badge.href,
+                  className: badgeClass,
+                },
+                badge.text,
+              )
+            : React.createElement(
+                "span",
+                {
+                  key: badge.text + index,
+                  className: badgeClass,
+                },
+                badge.text,
+              );
+        }),
       ),
     ),
     React.createElement(
@@ -194,10 +193,14 @@ function OriginsSection({ copy, originsImage }) {
   );
 }
 
-function CustomsSection({ copy, customsImages }) {
+function CustomsSection({ copy, customsImages, noBottomRadius = false }) {
+  const sectionClassName = noBottomRadius
+    ? "section section--green section--no-bottom-radius"
+    : "section section--green";
+
   return React.createElement(
     "section",
-    { className: "section section--green", id: "customs" },
+    { className: sectionClassName, id: "customs" },
     React.createElement(
       "div",
       { className: "customs-grid" },
@@ -262,7 +265,67 @@ function CustomsSection({ copy, customsImages }) {
   );
 }
 
-function FooterSection({ copy, brandUrl }) {
+function FooterSection({ copy, brandUrl, variant = "default" }) {
+  if (variant === "editorial" && Array.isArray(copy.footerColumns)) {
+    return React.createElement(
+      "footer",
+      { className: "footer footer--editorial" },
+      React.createElement(
+        "div",
+        { className: "footer__brand footer__brand--editorial" },
+        React.createElement("p", { className: "footer__title" }, copy.footerTitle),
+        React.createElement("p", { className: "footer__subtitle" }, copy.footerSubtitle),
+        copy.footerBrandNote
+          ? React.createElement("p", { className: "footer__note" }, copy.footerBrandNote)
+          : null,
+      ),
+      React.createElement(
+        "div",
+        { className: "footer__columns" },
+        ...copy.footerColumns.map((column, index) =>
+          React.createElement(
+            "div",
+            { className: "footer__column", key: `${column.heading}-${index}` },
+            React.createElement("p", { className: "footer__column-title" }, column.heading),
+            ...column.items.map((item, itemIndex) =>
+              item.href
+                ? React.createElement(
+                    "a",
+                    {
+                      className: item.highlight
+                        ? "footer__column-link footer__column-link--highlight"
+                        : "footer__column-link",
+                      href: item.href,
+                      key: `${item.text}-${itemIndex}`,
+                      target: item.external ? "_blank" : undefined,
+                      rel: item.external ? "noreferrer" : undefined,
+                    },
+                    item.text,
+                  )
+                : React.createElement(
+                    "p",
+                    {
+                      className: item.highlight
+                        ? "footer__column-link footer__column-link--highlight"
+                        : "footer__column-link",
+                      key: `${item.text}-${itemIndex}`,
+                    },
+                    item.text,
+                  ),
+            ),
+            column.description
+              ? React.createElement(
+                  "p",
+                  { className: "footer__column-description" },
+                  column.description,
+                )
+              : null,
+          ),
+        ),
+      ),
+    );
+  }
+
   return React.createElement(
     "footer",
     { className: "footer" },
@@ -334,21 +397,20 @@ function FestivalPage({ config, lang }) {
       React.createElement(CustomsSection, {
         copy,
         customsImages: config.images.customs,
+        noBottomRadius: Boolean(config.customsNoBottomRadius),
       }),
     ),
     React.createElement(FooterSection, {
       copy,
       brandUrl: config.brandUrl,
+      variant: config.footerVariant || "default",
     }),
   );
 }
 
 function App() {
   const [lang, setLang] = useState(() => getLangFromSearch(window.location.search));
-  const config = useMemo(
-    () => getFestivalConfigFromPath(window.location.pathname),
-    [],
-  );
+  const config = useMemo(() => getFestivalConfigFromPath(window.location.pathname), []);
 
   useEffect(() => {
     const onPopState = () => {
