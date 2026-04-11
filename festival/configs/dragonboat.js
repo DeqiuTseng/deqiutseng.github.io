@@ -4,26 +4,22 @@ export const dragonBoatFestivalConfig = {
   images: {
     hero: {
       avif: "./assets/hero-dragon-boat.avif",
-      fallback: "./assets/hero-dragon-boat.webp",
       width: 920,
       height: 600,
     },
     origins: {
       avif: "./assets/origins-zongzi.avif",
-      fallback: "./assets/origins-zongzi.webp",
       width: 1400,
       height: 720,
     },
     customs: [
       {
         avif: "./assets/custom-dragon-boat.avif",
-        fallback: "./assets/custom-dragon-boat.webp",
         width: 840,
         height: 440,
       },
       {
         avif: "./assets/custom-zongzi.avif",
-        fallback: "./assets/custom-zongzi.webp",
         width: 840,
         height: 440,
       },

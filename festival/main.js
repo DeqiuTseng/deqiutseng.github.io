@@ -7,20 +7,15 @@ function getLangFromSearch(search) {
   return params.get("lang") === "en" ? "en" : "zh";
 }
 
-function ResponsiveImage({ avif, fallback, alt, width, height, eager = false }) {
-  return React.createElement(
-    "picture",
-    null,
-    React.createElement("source", { srcSet: avif, type: "image/avif" }),
-    React.createElement("img", {
-      src: fallback,
-      alt,
-      width,
-      height,
-      loading: eager ? "eager" : "lazy",
-      fetchPriority: eager ? "high" : undefined,
-    }),
-  );
+function ResponsiveImage({ src, alt, width, height, eager = false }) {
+  return React.createElement("img", {
+    src,
+    alt,
+    width,
+    height,
+    loading: eager ? "eager" : "lazy",
+    fetchPriority: eager ? "high" : undefined,
+  });
 }
 
 function getThemeStyle(theme) {
@@ -106,8 +101,7 @@ function HeroSection({ copy, heroImage }) {
       "figure",
       { className: "hero__media framed-media" },
       React.createElement(ResponsiveImage, {
-        avif: heroImage.avif,
-        fallback: heroImage.fallback,
+        src: heroImage.avif,
         alt: copy.heroImageAlt,
         width: heroImage.width,
         height: heroImage.height,
@@ -144,8 +138,7 @@ function OriginsSection({ copy, originsImage }) {
           "div",
           { className: "framed-media framed-media--flat" },
           React.createElement(ResponsiveImage, {
-            avif: originsImage.avif,
-            fallback: originsImage.fallback,
+            src: originsImage.avif,
             alt: copy.originsImageAlt,
             width: originsImage.width,
             height: originsImage.height,
@@ -248,8 +241,7 @@ function CustomsSection({ copy, customsImages }) {
           "figure",
           { className: "framed-media" },
           React.createElement(ResponsiveImage, {
-            avif: customsImages[0].avif,
-            fallback: customsImages[0].fallback,
+            src: customsImages[0].avif,
             alt: copy.customDragonBoatAlt,
             width: customsImages[0].width,
             height: customsImages[0].height,
@@ -259,8 +251,7 @@ function CustomsSection({ copy, customsImages }) {
           "figure",
           { className: "framed-media" },
           React.createElement(ResponsiveImage, {
-            avif: customsImages[1].avif,
-            fallback: customsImages[1].fallback,
+            src: customsImages[1].avif,
             alt: copy.customZongziAlt,
             width: customsImages[1].width,
             height: customsImages[1].height,

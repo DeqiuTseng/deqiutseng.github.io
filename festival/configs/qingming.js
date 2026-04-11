@@ -32,26 +32,22 @@ export const qingmingFestivalConfig = {
   images: {
     hero: {
       avif: "./assets/hero-qingming.avif",
-      fallback: "./assets/hero-qingming.webp",
       width: 920,
       height: 600,
     },
     origins: {
       avif: "./assets/origins-qingming.avif",
-      fallback: "./assets/origins-qingming.webp",
       width: 1400,
       height: 720,
     },
     customs: [
       {
         avif: "./assets/custom-qingming-1.avif",
-        fallback: "./assets/custom-qingming-1.webp",
         width: 840,
         height: 440,
       },
       {
         avif: "./assets/custom-qingming-2.avif",
-        fallback: "./assets/custom-qingming-2.webp",
         width: 840,
         height: 440,
       },
