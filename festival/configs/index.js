@@ -4,6 +4,7 @@ import { nationalDayFestivalConfig } from "./nationalday.js";
 import { newYearFestivalConfig } from "./newyear.js";
 import { qingmingFestivalConfig } from "./qingming.js";
 import { valentineFestivalConfig } from "./valentine.js";
+import { womensDayFestivalConfig } from "./womensday.js";
 
 export const festivalConfigs = {
   [childrenDayFestivalConfig.slug]: childrenDayFestivalConfig,
@@ -12,6 +13,7 @@ export const festivalConfigs = {
   [newYearFestivalConfig.slug]: newYearFestivalConfig,
   [qingmingFestivalConfig.slug]: qingmingFestivalConfig,
   [valentineFestivalConfig.slug]: valentineFestivalConfig,
+  [womensDayFestivalConfig.slug]: womensDayFestivalConfig,
 };
 
 export function getFestivalSlugFromPath(pathname) {

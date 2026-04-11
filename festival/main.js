@@ -278,6 +278,9 @@ function FooterSection({ copy, brandUrl, variant = "default" }) {
         copy.footerBrandNote
           ? React.createElement("p", { className: "footer__note" }, copy.footerBrandNote)
           : null,
+        copy.footerBrandPill
+          ? React.createElement("p", { className: "footer__pill" }, copy.footerBrandPill)
+          : null,
       ),
       React.createElement(
         "div",
@@ -354,6 +357,197 @@ function FooterSection({ copy, brandUrl, variant = "default" }) {
   );
 }
 
+function WomensdayStrictPage({ copy, config }) {
+  return React.createElement(
+    React.Fragment,
+    null,
+    React.createElement(
+      "main",
+      { className: "festival-page festival-page--strict" },
+      React.createElement(
+        "section",
+        { className: "hero hero--strict" },
+        React.createElement(
+          "div",
+          { className: "hero__copy hero__copy--strict" },
+          React.createElement("p", { className: "hero__eyebrow" }, copy.heroEyebrow),
+          React.createElement("h1", null, copy.heroTitle),
+          React.createElement("p", { className: "hero__lead" }, copy.heroLead),
+          React.createElement(
+            "div",
+            { className: "hero__badges", "aria-label": "festival sections" },
+            ...(copy.heroBadges || []).map((badge, index) =>
+              React.createElement(
+                badge.href ? "a" : "span",
+                {
+                  key: `${badge.text}-${index}`,
+                  href: badge.href,
+                  className:
+                    badge.variant === "muted" ? "badge badge--muted" : "badge",
+                },
+                badge.text,
+              ),
+            ),
+          ),
+          React.createElement(
+            "div",
+            { className: "hero__stats" },
+            ...(copy.heroStats || []).map((item, index) =>
+              React.createElement(
+                "article",
+                {
+                  className: item.accent
+                    ? "hero__stat hero__stat--accent"
+                    : "hero__stat",
+                  key: `${item.heading}-${index}`,
+                },
+                React.createElement("p", { className: "hero__stat-kicker" }, item.heading),
+                React.createElement("h3", { className: "hero__stat-title" }, item.title),
+                React.createElement("p", { className: "hero__stat-body" }, item.body),
+              ),
+            ),
+          ),
+        ),
+        React.createElement(
+          "div",
+          { className: "hero__media hero__media--strict" },
+          React.createElement(
+            "figure",
+            { className: "framed-media" },
+            React.createElement(ResponsiveImage, {
+              src: config.images.hero.avif,
+              alt: copy.heroImageAlt,
+              width: config.images.hero.width,
+              height: config.images.hero.height,
+              eager: true,
+            }),
+          ),
+          React.createElement(
+            "div",
+            { className: "hero__overlay-row" },
+            React.createElement(
+              "article",
+              { className: "hero__overlay-card hero__overlay-card--light" },
+              React.createElement("p", { className: "hero__overlay-kicker" }, copy.heroFocusTag),
+              React.createElement("h3", { className: "hero__overlay-title" }, copy.heroFocusTitle),
+            ),
+            React.createElement(
+              "article",
+              { className: "hero__overlay-card hero__overlay-card--dark" },
+              React.createElement("p", { className: "hero__overlay-kicker" }, copy.heroNoteTag),
+              React.createElement("p", { className: "hero__overlay-body" }, copy.heroNoteBody),
+            ),
+          ),
+        ),
+      ),
+      React.createElement(
+        "section",
+        { className: "section section--light", id: "origins" },
+        React.createElement(
+          "div",
+          { className: "section__header" },
+          React.createElement(
+            "p",
+            { className: "section__eyebrow section__eyebrow--blue" },
+            copy.originsEyebrow,
+          ),
+          React.createElement("h2", null, copy.originsTitle),
+          React.createElement("p", { className: "section__intro" }, copy.originsIntro),
+        ),
+        React.createElement(
+          "div",
+          { className: "origins-grid" },
+          React.createElement(
+            "div",
+            { className: "origins-grid__visual" },
+            React.createElement(
+              "div",
+              { className: "framed-media" },
+              React.createElement(ResponsiveImage, {
+                src: config.images.origins.avif,
+                alt: copy.originsImageAlt,
+                width: config.images.origins.width,
+                height: config.images.origins.height,
+              }),
+            ),
+            React.createElement("p", null, copy.originCardBody),
+          ),
+          React.createElement(
+            "div",
+            { className: "origins-grid__cards" },
+            ...(copy.originsFacts || []).map((fact, index) =>
+              React.createElement(
+                "article",
+                { className: "info-card", key: `${fact.heading}-${index}` },
+                React.createElement("h3", null, fact.heading),
+                React.createElement("p", null, fact.body),
+              ),
+            ),
+          ),
+        ),
+      ),
+      React.createElement(
+        "section",
+        { className: "section section--green section--no-bottom-radius", id: "customs" },
+        React.createElement(
+          "div",
+          { className: "customs-grid" },
+          React.createElement(
+            "div",
+            { className: "customs-grid__content" },
+            React.createElement(
+              "div",
+              { className: "section__header section__header--compact" },
+              React.createElement("p", { className: "section__eyebrow" }, copy.customsEyebrow),
+              React.createElement("h2", null, copy.customsTitle),
+              React.createElement("p", { className: "section__intro" }, copy.customsIntro),
+            ),
+          ),
+          React.createElement(
+            "div",
+            { className: "customs-grid__gallery" },
+            React.createElement(
+              "article",
+              { className: "habit-card" },
+              React.createElement(
+                "figure",
+                { className: "framed-media" },
+                React.createElement(ResponsiveImage, {
+                  src: config.images.customs[0].avif,
+                  alt: copy.customDragonBoatAlt,
+                  width: config.images.customs[0].width,
+                  height: config.images.customs[0].height,
+                }),
+              ),
+              React.createElement("p", null, copy.customsCard1Text),
+            ),
+            React.createElement(
+              "article",
+              { className: "habit-card" },
+              React.createElement(
+                "figure",
+                { className: "framed-media" },
+                React.createElement(ResponsiveImage, {
+                  src: config.images.customs[1].avif,
+                  alt: copy.customZongziAlt,
+                  width: config.images.customs[1].width,
+                  height: config.images.customs[1].height,
+                }),
+              ),
+              React.createElement("p", null, copy.customsCard2Text),
+            ),
+          ),
+        ),
+      ),
+    ),
+    React.createElement(FooterSection, {
+      copy,
+      brandUrl: config.brandUrl,
+      variant: "editorial",
+    }),
+  );
+}
+
 function FestivalPage({ config, lang }) {
   const copy = config.translations[lang] || config.translations.zh;
 
@@ -379,6 +573,14 @@ function FestivalPage({ config, lang }) {
       });
     };
   }, [config.theme, copy, lang]);
+
+  if (config.layoutVariant === "womensday_strict") {
+    return React.createElement(
+      "div",
+      { className: "page-shell", id: "top" },
+      React.createElement(WomensdayStrictPage, { copy, config }),
+    );
+  }
 
   return React.createElement(
     "div",
