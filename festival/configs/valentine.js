@@ -1,6 +1,8 @@
 export const valentineFestivalConfig = {
   slug: "valentine",
   brandUrl: "https://dayticker.net",
+  customsNoBottomRadius: true,
+  footerVariant: "editorial",
   theme: {
     bgMain: "#FFF8F1",
     bgHero: "#F6EDE4",
@@ -28,6 +30,7 @@ export const valentineFestivalConfig = {
     habitBg: "#FFF8FA",
     habitBorder: "#6A3148",
     habitTitle: "#7A2443",
+    footerTopLine: "#5E4348",
   },
   images: {
     hero: {

@@ -1,7 +1,8 @@
 export const womensDayFestivalConfig = {
   slug: "womensday",
   brandUrl: "https://dayticker.net",
-  layoutVariant: "womensday_strict",
+  customsNoBottomRadius: true,
+  footerVariant: "default",
   theme: {
     bgMain: "#FFF8F1",
     bgHero: "#F5EEE4",
@@ -29,7 +30,7 @@ export const womensDayFestivalConfig = {
     habitBg: "#F7F5FB",
     habitBorder: "#7B78A8",
     habitTitle: "#4D3E74",
-    footerTopLine: "#51464B",
+    footerTopLine: "#5E4348",
   },
   images: {
     hero: {
@@ -63,37 +64,12 @@ export const womensDayFestivalConfig = {
       heroTitle: "让她们的专业、耐心与锋芒，被看见，也被认真命名",
       heroLead:
         "从会议桌、工作台与通勤路上，到照顾家庭、组织社区与坚持创作的日常现场，这一页致敬持续发光的女性力量。",
-      heroStats: [
-        {
-          heading: "专题视角",
-          title: "职业与日常",
-          body: "把专业能力、照料劳动与个人表达放在同一张叙事版面里。",
-          accent: false,
-        },
-        {
-          heading: "人物群像",
-          title: "08 幅现场切片",
-          body: "聚焦创作者、工程师、教师、护理者与普通生活中的坚韧瞬间。",
-          accent: false,
-        },
-        {
-          heading: "核心语气",
-          title: "坚定、明亮、克制",
-          body: "避免节庆浪漫化表达，让尊重感与真实生活经验成为主轴。",
-          accent: true,
-        },
-      ],
       heroBadges: [
         { text: "节日起源", href: "#origins", variant: "primary" },
         { text: "今日表达", href: "#customs", variant: "muted" },
         { text: "每年 3 月 8 日", variant: "primary" },
         { text: "Work / Care / Creation", variant: "muted" },
       ],
-      heroFocusTag: "本期主线",
-      heroFocusTitle: "她们并不等待被赞美，而是在现场定义标准",
-      heroNoteTag: "编辑注",
-      heroNoteBody:
-        "从工作与生活的交叠处进入，记录那些常被忽略却持续照亮周围的人。",
       heroImageAlt: "妇女节专题中的女性职业与日常群像场景",
       originsEyebrow: "节日起源 · Origins",
       originsTitle: "妇女节从何而来？",
@@ -101,20 +77,6 @@ export const womensDayFestivalConfig = {
         "国际妇女节既是对女性争取平等权利历史的纪念，也是今天重新看见女性劳动、创造力与公共影响力的重要时刻。",
       originsImageAlt: "妇女节相关的女性工作与公共参与场景",
       originsCaption: "尊重不应停留在祝福，而应落实到机会、表达与制度支持之中。",
-      originsFacts: [
-        {
-          heading: "历史背景",
-          body: "妇女节起源于 20 世纪初全球女性争取劳动权与政治权利的运动，后来逐渐成为国际社会共同纪念的重要日期。",
-        },
-        {
-          heading: "现实意义",
-          body: "它让“感谢女性”之外的议题进入公共讨论，包括平等机会、职场环境、家庭分工、教育支持与社会安全。",
-        },
-        {
-          heading: "今天的表达",
-          body: "在学校、公司、社区与家庭里，妇女节也成为一次重新倾听女性经验、看见女性贡献并给出更真实支持的机会。",
-        },
-      ],
       originCardTitle: "历史脉络",
       originCardBody:
         "从争取工作权、选举权到教育机会与平等话语，妇女节承载着持续向前的历史线索。今天谈论妇女节，不只是回顾成就，更是继续回应现实议题：公平、照护、职业发展与安全感。",
@@ -127,17 +89,22 @@ export const womensDayFestivalConfig = {
       customsEyebrow: "妇女节庆祝方式",
       customsTitle: "妇女节可以怎样被好好庆祝？",
       customsIntro:
-        "• 讲述与分享：邀请不同年龄、职业与经历的女性讲述自己的故事，让经验被看见。\n• 致敬日常劳动：家务、照护、管理、组织与创作，同样值得被公开感谢与认真分担。\n• 关注真实支持：比起一次性的口号，改善制度、提供资源、创造更安全公平的环境更重要。\n• 让庆祝更具体：送花、展览、沙龙、读书会或一次认真对话，都可以成为尊重的开始。",
-      customsCard1Text: "从办公室到工作坊，女性的专业与判断力每天都在塑造现实。",
-      customsCard2Text: "家庭、社区与公共空间中的照护劳动，也值得被认真看见与尊重。",
+        "比起一次性的口号，讲述、分担、支持与制度改进更重要。庆祝的价值在于把“尊重”变得具体。",
+      habit1Title: "① 讲述与分享",
+      habit1Body:
+        "邀请不同年龄、职业与经历的女性讲述自己的故事，让经验被看见，让声音被认真聆听。",
+      habit2Title: "② 致敬日常劳动",
+      habit2Body:
+        "家务、照护、管理、组织与创作同样值得被公开感谢，也值得被公平分担。",
+      habit3Title: "③ 关注真实支持",
+      habit3Body:
+        "改善制度、提供资源、创造更安全公平的环境，比节日当天的热闹更能带来长期改变。",
       customDragonBoatAlt: "女性在职业现场中的专注与专业表达",
       customZongziAlt: "女性在家庭与社区照护场景中的真实贡献",
-      footerTitle: "DayTicker · 妇女节 International Women's Day",
-      footerSubtitle:
-        "记录她们在工作、生活与创造中的真实光芒，让专题页面成为更有尊重感的观看入口。",
+      footerTitle: "妇女节 · International Women's Day",
+      footerSubtitle: "让尊重不止停在祝福，也落在日常行动里。",
       footerBrandNote:
         "Editorial festival stories for courage, labor, and everyday brilliance.",
-      footerBrandPill: "Browse all features",
       footerColumns: [
         {
           heading: "专题导览",
@@ -152,13 +119,13 @@ export const womensDayFestivalConfig = {
           items: [
             { text: "劳动与照料", href: "#origins" },
             { text: "创作与表达", href: "#customs" },
-            { text: "尊重感排版", href: "#top" },
+            { text: "平等与支持", href: "#top" },
           ],
         },
         {
           heading: "品牌出口",
           items: [{ text: "DayTicker", href: "https://dayticker.net", external: true, highlight: true }],
-          description: "继续浏览更多关于节日、文化与公共叙事的专题页面。",
+          description: "继续浏览更多值得被认真讲述的节日专题。",
         },
       ],
       footerOrigins: "节日起源",
@@ -175,37 +142,12 @@ export const womensDayFestivalConfig = {
         "Let their expertise, patience, and sharpness be seen, and named with respect",
       heroLead:
         "From meeting rooms and workshops to care work, community effort, and creative practice, this page honors the women whose everyday work keeps shaping the world.",
-      heroStats: [
-        {
-          heading: "Lens",
-          title: "Work and Everyday Life",
-          body: "Putting professional skill, care labor, and personal voice in one narrative view.",
-          accent: false,
-        },
-        {
-          heading: "Portrait Set",
-          title: "08 Scene Fragments",
-          body: "Focusing on creators, engineers, teachers, caregivers, and resilient moments in ordinary life.",
-          accent: false,
-        },
-        {
-          heading: "Core Tone",
-          title: "Firm, Bright, Restrained",
-          body: "Avoiding festive romanticization and centering respect with lived experience.",
-          accent: true,
-        },
-      ],
       heroBadges: [
         { text: "Origins", href: "#origins", variant: "primary" },
         { text: "Today", href: "#customs", variant: "muted" },
         { text: "March 8 Every Year", variant: "primary" },
         { text: "Work / Care / Creation", variant: "muted" },
       ],
-      heroFocusTag: "Main Thread",
-      heroFocusTitle: "They do not wait for praise; they define standards on site",
-      heroNoteTag: "Editor's Note",
-      heroNoteBody:
-        "Starting from where work and life overlap, we document women who keep lighting up their surroundings.",
       heroImageAlt:
         "Women's Day feature visual with professional and everyday female scenes",
       originsEyebrow: "Festival Origins · Origins",
@@ -216,20 +158,6 @@ export const womensDayFestivalConfig = {
         "Women's Day themed scene featuring women's work and civic participation",
       originsCaption:
         "Respect should not stop at greetings; it should appear in opportunities, expression, and structural support.",
-      originsFacts: [
-        {
-          heading: "Historical Context",
-          body: "Women's Day emerged from early 20th-century movements for labor and political rights, and later became an internationally recognized commemorative date.",
-        },
-        {
-          heading: "Present Relevance",
-          body: "It opens discussion beyond appreciation, including equal opportunity, workplace conditions, care distribution, education, and safety.",
-        },
-        {
-          heading: "Today's Expression",
-          body: "Across schools, companies, communities, and homes, it is a chance to hear women's experiences and offer more concrete support.",
-        },
-      ],
       originCardTitle: "Historical Pathways",
       originCardBody:
         "From labor rights and voting rights to education access and equal voice, Women's Day carries a long line of collective progress. Today, it is also a reminder to keep addressing fairness, care, career growth, and safety.",
@@ -245,21 +173,24 @@ export const womensDayFestivalConfig = {
       customsEyebrow: "Ways to Mark the Day",
       customsTitle: "How can Women's Day be celebrated meaningfully?",
       customsIntro:
-        "• Storytelling and sharing: invite women across ages and professions so lived experience is visible.\n• Honor everyday labor: care, household coordination, management, and creation all deserve acknowledgment.\n• Focus on real support: resources, policies, and safer, fairer environments matter more than one-day gestures.\n• Make celebration concrete: flowers, salons, reading groups, exhibitions, and serious conversations can all be a start.",
-      customsCard1Text:
-        "From offices to workshops, women's expertise and judgment shape reality every day.",
-      customsCard2Text:
-        "Care labor in families, communities, and public spaces also deserves clear recognition and respect.",
+        "Beyond slogans, meaningful celebration means storytelling, shared responsibility, practical support, and long-term improvement.",
+      habit1Title: "1. Storytelling and Sharing",
+      habit1Body:
+        "Invite women across ages, professions, and backgrounds to speak, so lived experience is visible and heard.",
+      habit2Title: "2. Honor Everyday Labor",
+      habit2Body:
+        "Care work, household coordination, management, and creation all deserve public acknowledgment and fairer distribution.",
+      habit3Title: "3. Focus on Real Support",
+      habit3Body:
+        "Policy, resources, and safer, fairer environments matter more than one-day gestures.",
       customDragonBoatAlt:
         "Women demonstrating focus and expertise in professional settings",
       customZongziAlt:
         "Women's contribution in care work across family and community contexts",
-      footerTitle: "DayTicker · International Women's Day",
-      footerSubtitle:
-        "A respectful viewing entry for women's real brilliance in work, life, and creation.",
+      footerTitle: "International Women's Day",
+      footerSubtitle: "Let respect move from celebration into everyday action.",
       footerBrandNote:
         "Editorial festival stories for courage, labor, and everyday brilliance.",
-      footerBrandPill: "Browse all features",
       footerColumns: [
         {
           heading: "Feature Map",
@@ -274,13 +205,13 @@ export const womensDayFestivalConfig = {
           items: [
             { text: "Labor & Care", href: "#origins" },
             { text: "Creation & Voice", href: "#customs" },
-            { text: "Respectful Layout", href: "#top" },
+            { text: "Equity & Support", href: "#top" },
           ],
         },
         {
           heading: "Brand Exit",
           items: [{ text: "DayTicker", href: "https://dayticker.net", external: true, highlight: true }],
-          description: "Browse more features on festivals, culture, and public narratives.",
+          description: "Browse more festival features built with thoughtful narratives.",
         },
       ],
       footerOrigins: "Origins",
