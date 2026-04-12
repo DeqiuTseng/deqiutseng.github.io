@@ -2,6 +2,7 @@ import { childrenDayFestivalConfig } from "./children.js";
 import { dragonBoatFestivalConfig } from "./dragonboat.js";
 import { earthDayFestivalConfig } from "./earthday.js";
 import { halloweenFestivalConfig } from "./halloween.js";
+import { independenceDayFestivalConfig } from "./independenceday.js";
 import { laborDayFestivalConfig } from "./laborday.js";
 import { nationalDayFestivalConfig } from "./nationalday.js";
 import { newYearFestivalConfig } from "./newyear.js";
@@ -14,6 +15,7 @@ export const festivalConfigs = {
   [dragonBoatFestivalConfig.slug]: dragonBoatFestivalConfig,
   [earthDayFestivalConfig.slug]: earthDayFestivalConfig,
   [halloweenFestivalConfig.slug]: halloweenFestivalConfig,
+  [independenceDayFestivalConfig.slug]: independenceDayFestivalConfig,
   [laborDayFestivalConfig.slug]: laborDayFestivalConfig,
   [nationalDayFestivalConfig.slug]: nationalDayFestivalConfig,
   [newYearFestivalConfig.slug]: newYearFestivalConfig,
