@@ -34,23 +34,23 @@ export const kodomoNoHiFestivalConfig = {
   },
   images: {
     hero: {
-      avif: "./assets/hero-kodomonohi.avif",
+      avif: "./assets/hero-kodomonohi.avif?v=20260413b",
       width: 976,
       height: 476,
     },
     origins: {
-      avif: "./assets/origins-kodomonohi.avif",
+      avif: "./assets/origins-kodomonohi.avif?v=20260413b",
       width: 1400,
       height: 560,
     },
     customs: [
       {
-        avif: "./assets/custom-kodomonohi-1.avif",
+        avif: "./assets/custom-kodomonohi-1.avif?v=20260413b",
         width: 792,
         height: 380,
       },
       {
-        avif: "./assets/custom-kodomonohi-2.avif",
+        avif: "./assets/custom-kodomonohi-2.avif?v=20260413b",
         width: 792,
         height: 380,
       },
