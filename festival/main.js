@@ -356,6 +356,13 @@ function FooterSection({ copy, brandUrl, variant = "default" }) {
 
 function FestivalPage({ config, lang }) {
   const copy = config.translations[lang] || config.translations.zh;
+  const pageShellClassNames = [`page-shell`, `page-shell--${config.slug}`];
+  if (config.customsNoBottomRadius) {
+    pageShellClassNames.push("page-shell--customs-no-bottom");
+  }
+  if ((config.footerVariant || "default") === "default") {
+    pageShellClassNames.push("page-shell--footer-default");
+  }
 
   useEffect(() => {
     const themeStyle = getThemeStyle(config.theme);
@@ -382,7 +389,7 @@ function FestivalPage({ config, lang }) {
 
   return React.createElement(
     "div",
-    { className: "page-shell", id: "top" },
+    { className: pageShellClassNames.join(" "), id: "top" },
     React.createElement(
       "main",
       { className: "festival-page" },

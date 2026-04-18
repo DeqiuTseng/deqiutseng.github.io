@@ -326,4 +326,13 @@ ul { padding: 0; list-style: none; }
   .footer { margin-bottom: 8px; }
   .footer__nav { gap: 12px 18px; }
   .footer__columns { gap: 20px; flex-direction: column; }
+
+  .page-shell--customs-no-bottom.page-shell--footer-default .section--no-bottom-radius {
+    border-radius: 20px;
+  }
+
+  .page-shell--customs-no-bottom.page-shell--footer-default .section--no-bottom-radius + .footer {
+    margin-top: 12px;
+    border-radius: 20px;
+  }
 }
